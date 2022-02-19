@@ -21,7 +21,7 @@
   </h2>
   <h2 :class="'promoted new'">testing</h2>
   </div>
-  <!-- codevolution 10 - 15 -
+  codevolution 10 - 15 -
   <div>
     <h2 v-if="num === 0">The number is zero</h2>
     <h2 v-else>the num is not zero</h2>
@@ -30,8 +30,22 @@
   <div>
     <h2 v-for="(name, index) in names" :key="name">{{index}} {{name}}</h2>
   </div> -->
-  <h1>{{3 + 8 + 5}}</h1>
-  <h1>{{3 + 100 + 5}}</h1>
+  <div>
+  <h1> Normal method :  {{3 + 8 + 5}}</h1>
+  <h1> Add method : {{add(5, 4, 3)}}</h1>
+  <h1> Multiply method : {{multiply(10)}} </h1>
+  <button v-on:click="changeName">Change name</button>
+  <h1> {{name}} </h1>
+  <!-- counter -->
+  <h1> {{counter}} </h1>
+  <div>
+    <button v-on:click="increment($event)">increment</button>
+  <!-- decrement -->
+  <button v-on:click="decrement">decrement</button>
+  </div>
+  
+  
+  </div>
 </template>
 
 <script>
@@ -40,7 +54,9 @@ export default {
   name: 'App',
   data(){
     return{
-      name : "ishan"
+      name : "ishan",
+      baseMultiplier : 5,
+      counter : 0
       // codevolution 1-15
       // third code block
       // names : ['ishan','priyank', 'omeed', 'khs'],
@@ -55,7 +71,26 @@ export default {
       // isPromoted : true,
       // isSoldOut : true,
     }
-  }
+  }, 
+  methods: {
+    changeName(event){
+      this.name = "Batman"
+      console.log('Event', event);
+    },
+    add(a, b, c){
+      return a + b + c
+    },
+    multiply(num){
+      return num*this.baseMultiplier
+    },
+    increment(event){
+      this.counter += 1;
+      console.log('Event', event);
+    },
+    decrement(){
+      this.counter -= 1;
+    }
+  },
 }
 </script>
 
